@@ -1,0 +1,61 @@
+
+:root{
+
+    --bgColor : #fff;
+}
+body{
+    font-family: 'Pretendard';
+   // font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    color: #222; 
+    position: relative;
+    line-height: 1;
+    max-width:1440px;
+}
+
+.blind{
+    position: absolute;   
+    width: 1px;height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    
+}
+.inner{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+
+$mobile :767px;
+$tablet : 1024px;
+$miniDesktop : 1600px;
+$desktop: 1920px;
+
+@mixin mobile{ 
+    @media (max-width: $mobile){
+         @content; 
+    } 
+}
+@mixin tablet{ 
+    @media (max-width: $tablet){ 
+        @content; 
+    } 
+}
+@mixin mnDesktop{ 
+    @media (max-width: $miniDesktop){ 
+        @content; 
+    } 
+}
+@mixin desktop{ 
+    @media (max-width: $desktop){ 
+        @content; 
+    } 
+}
+
+
+
+
+
+
+
