@@ -55,7 +55,7 @@
  
             },
             values:{
-                imgGall_opacity_in:[0, 1,{start:0,end:0.05}],
+                imgGall_opacity_in:[0, 1,{start:0,end:0.14}],
                 imgGall_top_in:[55, 50,{start :0.07,end:0.14}],
                 imgGall_scale_in:[2, 1 ,{start :0.07,end:0.14}],
 
@@ -184,9 +184,8 @@
 
             case 1:
               
-                 if(scrollRatio <= 0.06){
+                 if(scrollRatio <= 0.2){
                     objs.imgGall.style.opacity = calcValues(values.imgGall_opacity_in,currentYOffset);
-                 }else{
                     objs.imgGall.style.transform = `translateX(-50%) scale(${calcValues(values.imgGall_scale_in,currentYOffset)})`;
                     objs.imgGall.style.top = `${calcValues(values.imgGall_top_in,currentYOffset)}%`;
                  }
@@ -302,7 +301,6 @@
     window.addEventListener('scroll',()=>{
         yOffset = window.pageYOffset;
         scrollLoop();
-        //console.log(window.scrollY,window.pageYOffset)
     })
     window.addEventListener('load',()=>{
         setLayout();
