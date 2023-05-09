@@ -157,7 +157,7 @@
         const currentYOffset = yOffset - preScrollHeight;//활성화 된 섹션 안의 스크롤 위치
         const scrollHeight = sceneInfo[currentScene].scrollHeight;//활성화 된 섹션의 높이
         const scrollRatio = currentYOffset / scrollHeight;// 스크롤 비율
-       console.log(scrollRatio)
+       console.log(scrollRatio,currentScene)
         switch(currentScene){
             case 0:
             let sequence = Math.round(calcValues(values.imageSequence,currentYOffset))
@@ -245,19 +245,20 @@
                          //getBoundingClientRect().left 선택한 요소가 브우 창에서 얼큼 떨어져 있는지(왼쪽 기준)
                          //pageXOffset 가로 방향으로 스클로 얼만큼 된건지
              
-                             let x = e.clientX - card[i].getBoundingClientRect().left +(card[i].getBoundingClientRect().width / 2)+ window.pageXOffset;//0 - 0 + 비율
-                             let y = e.clientY - card[i].getBoundingClientRect().top + (card[i].getBoundingClientRect().height / 2) + window.pageYOffset;
+                             let x = e.clientX - card[i].getBoundingClientRect().left+ window.pageXOffset;//0 - 0 + 비율
+                             let y = e.clientY - card[i].getBoundingClientRect().top  + window.pageYOffset;
                              let rotX = getRange(y, 0, e.currentTarget.getBoundingClientRect().height, degree * -2, degree);
                              let rotY = getRange(x, 0, e.currentTarget.getBoundingClientRect().width, degree * -2, degree);
+                     
                              gsap.killTweensOf(cardImg);
-                             gsap.to(cardImg, {rotationX: rotX, rotationY: rotY, duration: .8});
+                             gsap.to(cardImg, {rotationX: rotX, rotationY: rotY, duration: .5});
                              setTimeout(()=>{
                                  cardImg.setAttribute('src',cardArrB[i]);
                              },100)
                      });
                      card[i].addEventListener('mouseleave',(e)=>{
                          gsap.killTweensOf(cardImg);
-                         gsap.to(cardImg, {rotationX: 0, rotationY: 0, duration: 0.8, ease: "sine.out"});
+                         gsap.to(cardImg, {rotationX: 0, rotationY: 0, duration: 0.5, ease: "sine.out"});
                          setTimeout(()=>{
                              cardImg.setAttribute('src',cardArrF[i]);
                          },100)
